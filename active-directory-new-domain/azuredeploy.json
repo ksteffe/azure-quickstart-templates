@@ -38,12 +38,25 @@
         "2016-Datacenter"
       ]
     },
+    "vmSize": {
+      "type": "string",
+      "metadata": {
+        "description": "Which VM type"
+      },
+      "defaultValue": "Standard_A0",
+      "allowedValues": [
+        "Basic_A0",
+        "Basic_A1",
+        "Standard_A0",
+        "Standard_A1"
+      ]
+    },
     "_artifactsLocation": {
       "type": "string",
       "metadata": {
         "description": "The location of resources, such as templates and DSC modules, that the template depends on"
       },
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/active-directory-new-domain"
+      "defaultValue": "https://raw.githubusercontent.com/ksteffe/azure-quickstart-templates/master/active-directory-new-domain"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -213,7 +226,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_D2_v2"
+          "vmSize": "[parameters('vmSize')]"
         },
         "availabilitySet": {
           "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('adAvailabilitySetName'))]"
